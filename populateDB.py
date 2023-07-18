@@ -26,7 +26,7 @@ def populate_users(file):
         password = row[1]
         email = row[2]
         hashed_password = hashlib.sha256(password.encode('utf-8')).hexdigest()
-        cursor.execute('INSERT or REPLACE INTO Users (username, password, email) VALUES (?, ?)', (username, hashed_password, email))
+        cursor.execute('INSERT or REPLACE INTO Users (username, password, email) VALUES (?, ?, ?)', (username, hashed_password, email))
 
     connection.commit()
 

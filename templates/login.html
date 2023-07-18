@@ -13,8 +13,8 @@
                 {% endif %}
                 <form action="/login" method="POST">
                     <div class="form-group">
-                        <label for="Email">Email</label>
-                        <input type="email" name="Email" class="form-control" id="Email" required>
+                        <label for="Username">Username</label>
+                        <input type="text" name="Username" class="form-control" id="Username" required>
                     </div>
                     <div class="form-group">
                         <label for="Password">Password</label>
@@ -24,7 +24,7 @@
                         <label>User Type</label><br>
                         <div id="user-selector">
                             <div class="user-type"><input type="radio" id="patient" name="user_type" value="Patient"><label for="patient">Patient</label></div>
-                            <div class="user-type"><input type="radio" id="doctor" name="user_type" value="Doctor"><label for="doctor">Doctor</label></div>
+                            <div class="user-type"><input type="radio" id="caregiver" name="user_type" value="Caregiver"><label for="caregiver">Caregiver</label></div>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Login</button>
