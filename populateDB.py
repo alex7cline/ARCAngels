@@ -31,7 +31,7 @@ def populate_users(file):
     connection.commit()
 
 
-# Populate user table
+# Populate caregivers table
 def populate_caregivers(file):
     # Drop table if it exists
     connection.execute('DROP TABLE IF EXISTS Caregivers;')
@@ -56,7 +56,7 @@ def populate_caregivers(file):
     connection.commit()
 
 
-# Populate user table
+# Populate patients table
 def populate_patients(file):
     # Drop table if it exists
     connection.execute('DROP TABLE IF EXISTS Patients;')
@@ -81,7 +81,7 @@ def populate_patients(file):
     connection.commit()
 
 
-# Populate user table
+# Populate patient data table
 def populate_patient_data(file):
     # Drop table if it exists
     connection.execute('DROP TABLE IF EXISTS Patient_Data;')
