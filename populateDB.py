@@ -87,7 +87,7 @@ def populate_patient_data(file):
     connection.execute('DROP TABLE IF EXISTS Patient_Data;')
 
     # Create table if it doesn't exist
-    connection.execute('CREATE TABLE IF NOT EXISTS Patient_Data(patient TEXT PRIMARY KEY, record_time TEXT, readings TEXT, comments TEXT, device TEXT);')
+    connection.execute('CREATE TABLE IF NOT EXISTS Patient_Data(patient TEXT PRIMARY KEY, record_date TEXT, record_time TEXT, readings TEXT, comments TEXT, device TEXT);')
 
     # Open csv file
     csv_file = open(f'{file}', encoding='utf-8-sig')
@@ -98,12 +98,12 @@ def populate_patient_data(file):
 
     for row in data:
         patient = row[0]
-        record_time = row[1]
-        readings = row[2]
-        comments = row[3]
-        device = row[4]
-        cursor.execute('INSERT or REPLACE INTO Patient_Data (patient, record_time, readings, comments, device) VALUES (?, ?, ?, ?, ?)', (patient, record_time, readings, comments, device))
-
+        record_date = row[1]
+        record_time = row[2]
+        readings = row[3]
+        comments = row[4]
+        device = row[5]
+        cursor.execute('INSERT or REPLACE INTO Patient_Data (patient, record_date, record_time, readings, comments, device) VALUES (?, ?, ?, ?, ?, ?)', (patient, record_date, record_time, readings, comments, device))
     connection.commit()
 
 

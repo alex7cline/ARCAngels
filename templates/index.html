@@ -1,13 +1,17 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Bokeh Plot in HTML Template</title>
+    <link rel="stylesheet" href="https://cdn.bokeh.org/bokeh/release/bokeh-2.3.3.min.css">
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.3.3.min.js"></script>
 </head>
 <body>
-Sample home page
+    <h1>Bokeh Plot in HTML Template</h1>
+    <div>
+        {{ div | safe }}
+    </div>
+    <div>
+        {{ script | safe }}
+    </div>
 </body>
 </html>

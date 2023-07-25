@@ -1,2 +1,35 @@
-﻿patient,record_date,time,readings,comments,device
-Dog7,6-7-23,
+﻿patient,record_date,record_time,readings,comments,device
+Dog7,3/30/2023,7:59:00 AM,154,,CareSource
+Dog7,3/30/2023,8:43:00 AM,69,,CareSource
+Dog7,3/30/2023,9:18:00 AM,154,,CareSource
+Dog7,3/30/2023,10:33:00 AM,160,,CareSource
+Dog7,3/30/2023,11:43:00 AM,184,,CareSource
+Dog7,3/30/2023,11:58:00 AM,164,,CareSource
+Dog7,3/29/2023,6:03:00 AM,141,,CareSource
+Dog7,3/29/2023,8:43:00 AM,139,,CareSource
+Dog7,3/29/2023,10:08:00 AM,160,,CareSource
+Dog7,3/29/2023,1:28:00 PM,270,,CareSource
+Dog7,3/29/2023,3:23:00 PM,214,,CareSource
+Dog7,3/29/2023,5:43:00 PM,202,,CareSource
+Dog7,3/29/2023,6:43:00 PM,180,,CareSource
+Dog7,3/29/2023,7:28:00 PM,164,,CareSource
+Dog7,3/29/2023,8:43:00 PM,187,,CareSource
+Dog7,3/29/2023,10:18:00 PM,204,,CareSource
+Dog7,3/29/2023,11:03:00 PM,140,,CareSource
+Dog7,3/29/2023,11:58:00 PM,96,,CareSource
+Dog7,3/28/2023,12:03:00 AM,112,,CareSource
+Dog7,3/28/2023,1:23:00 AM,100,,CareSource
+Dog7,3/28/2023,3:13:00 AM,117,,CareSource
+Dog7,3/28/2023,4:33:00 AM,132,,CareSource
+Dog7,3/28/2023,6:18:00 AM,112,,CareSource
+Dog7,3/28/2023,9:38:00 AM,122,,CareSource
+Dog7,3/28/2023,11:13:00 AM,125,,CareSource
+Dog7,3/28/2023,12:58:00 PM,100,,CareSource
+Dog7,3/28/2023,2:13:00 PM,92,,CareSource
+Dog7,3/28/2023,3:28:00 PM,199,,CareSource
+Dog7,3/28/2023,5:33:00 PM,155,,CareSource
+Dog7,3/28/2023,6:43:00 PM,150,,CareSource
+Dog7,3/28/2023,8:43:00 PM,145,,CareSource
+Dog7,3/28/2023,9:28:00 PM,160,,CareSource
+Dog7,3/28/2023,11:03:00 PM,164,,CareSource
+Dog7,3/28/2023,11:53:00 PM,162,,CareSource

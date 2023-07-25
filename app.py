@@ -1,7 +1,10 @@
 import sqlite3 as sql
 import hashlib
 from flask import Flask, render_template, request, session, redirect, url_for
-
+from datetime import datetime
+from bokeh.plotting import figure, show
+from bokeh.models import ColumnDataSource
+from bokeh.models.formatters import NumeralTickFormatter
 
 app = Flask(__name__)
 app.secret_key = 'ARCBiotracker'
@@ -57,7 +60,45 @@ def home():
     return redirect(url_for('login'))
 
 
+
+# prepare some data
+#x = [cursor.execute("SELECT timestamp FROM Patient_Data WHERE Patient_data.readings_date=? AND Patient_data=time?", (Date,time))]
+#y = [cursor.execute("SELECT readings FROM Patient_Data WHERE Patient_data.readings=?"), (Readings)]
+
+
+
+def generate_chart():
+    timestamps = ['2023-10-2|2am', '2023-10-3|10pm', '2023-10-4|2pm', '2023-10-5|4pm','2023-10-6|3pm']
+    values = [102, 202, 150, 251,100]
+
+    # Create a ColumnDataSource for Bokeh plot
+    source = ColumnDataSource(data={'timestamps': timestamps, 'values': values})
+
+    # Create a figure
+    p = figure(x_range=timestamps, title="Line Chart with Strings as Data", x_axis_label="Categories", y_axis_label="Values")
+
+    # Plot the data as a line chart
+    p.line(x='timestamps', y='values', source=source, line_width=2)
+    p.xaxis.major_label_orientation = 45
+
+    # Show the plot
+    show(p)
+
+#session['username'] = 'Dog7'
+
+def test():
+    connection = sql.connect('database.db')
+    cursor = connection.cursor()
+    # cursor.execute("SELECT record_date,record_time,readings FROM Patient_Data WHERE patient = ?", ('Dog7',))
+    # cursor.execute("SELECT * FROM Patient_Data WHERE patient = ?", ('Dog7',))
+    cursor.execute("SELECT * FROM Patient_Data")
+    user_data = cursor.fetchall()
+    print(user_data)
+
+
+
 # Run main app
 if __name__ == '__main__':
-    app.run()
-
+    #app.run()
+    #generate_chart()
+    test()
