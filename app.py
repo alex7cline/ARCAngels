@@ -99,6 +99,6 @@ def test():
 
 # Run main app
 if __name__ == '__main__':
-    #app.run()
-    #generate_chart()
+    app.run()
+    generate_chart()
     test()
