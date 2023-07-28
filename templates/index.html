@@ -2,16 +2,15 @@
 <html>
 <head>
     <title>Bokeh Plot in HTML Template</title>
-    <link rel="stylesheet" href="https://cdn.bokeh.org/bokeh/release/bokeh-2.3.3.min.css">
-    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.3.3.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-3.2.1.min.js"></script>
+
 </head>
 <body>
     <h1>Bokeh Plot in HTML Template</h1>
     <div>
-        {{ div | safe }}
-    </div>
-    <div>
-        {{ script | safe }}
+        <!-- Bokeh plot will be rendered here -->
+        {{ bokeh_script|safe }}
+        {{ bokeh_div|safe }}
     </div>
 </body>
 </html>

@@ -87,7 +87,7 @@ def populate_patient_data(file):
     connection.execute('DROP TABLE IF EXISTS Patient_Data;')
 
     # Create table if it doesn't exist
-    connection.execute('CREATE TABLE IF NOT EXISTS Patient_Data(patient TEXT PRIMARY KEY, record_date TEXT, record_time TEXT, readings TEXT, comments TEXT, device TEXT);')
+    connection.execute('CREATE TABLE IF NOT EXISTS Patient_Data(patient TEXT, record_date TEXT, record_time TEXT, readings REAL, comments TEXT, device TEXT,PRIMARY KEY(patient,record_date,record_time));')
 
     # Open csv file
     csv_file = open(f'{file}', encoding='utf-8-sig')
