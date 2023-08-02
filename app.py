@@ -53,24 +53,86 @@ def home():
     if 'username' in session:
         print(session['user_type'])
         if session['user_type'] == 'Patient':
+            return render_template('index.html', user=session['username'])
+        elif session['user_type'] == 'Caregiver':
+            return render_template('index.html', user=session['username'])
+    return redirect(url_for('login'))
+
+
+@app.route('/sign-up', methods=['POST', 'GET'])
+def signup():
+    if request.method == 'POST':
+        connection = sql.connect('database.db')
+        cursor = connection.cursor()
+        username = request.form['uname']
+        password = request.form['pass']
+        email = request.form['email']
+        first_name = request.form['fname']
+        last_name = request.form['lname']
+        dob = request.form['DOB']
+        hashed_password = hashlib.sha256(password.encode('utf-8')).hexdigest()
+        cursor.execute("SELECT username FROM Users WHERE Users.username=?", (username,))
+        user = cursor.fetchone()
+        if user is not None:
+            return render_template('signUp.html', message='Username already taken')
+        else:
+            cursor.execute('INSERT INTO Users (username, password,email) VALUES (?, ?, ?)', (username, hashed_password,email))
+            cursor.execute('INSERT INTO Patients (username,first_name, last_name, DOB) VALUES (?, ?, ?, ?)', (username, first_name,last_name,dob))
+            connection.commit()
+            return render_template('login.html', success='Successfully Created Account')
+    return render_template('signUp.html')
+
+
+@app.route('/view-readings')
+def viewreadings():
+    if session['user_type'] == 'Patient':
+        connection = sql.connect('database.db')
+        cursor = connection.cursor()
+        cursor.execute("SELECT record_date,record_time,readings FROM Patient_Data WHERE patient = ?", (session['username'],))
+        user_data = cursor.fetchall()
+        if (user_data):
             # Generate the Bokeh plot
             chart = generate_patient_chart(session['username'])
             # Get the JavaScript and HTML components of the Bokeh plot
             script, div = components(chart)
             # Pass Bokeh plot components to the template context
-            return render_template('index.html', user=session['username'], bokeh_script=script, bokeh_div=div)
-        elif session['user_type'] == 'Caregiver':
-            return render_template('index.html', user=session['username'])
-    return redirect(url_for('login'))
+            return render_template('chart.html', user=session['username'], bokeh_script=script, bokeh_div=div)
+        return render_template('chart.html', user=session['username'], message="No Data to Display")
+    else:
+        return render_template('index.html', user=session['username'])
+
+
+@app.route('/add-data', methods=['POST', 'GET'])
+def adddata():
+    if request.method == 'POST':
+        connection = sql.connect('database.db')
+        cursor = connection.cursor()
+        reading_date = request.form['readingdate']
+        reading_time = request.form['time']
+        reading = request.form['reading']
+        notes = request.form['Notes']
+        device = request.form['device']
+        cursor.execute('INSERT OR REPLACE INTO Patient_Data (patient,record_date,record_time,readings,comments,'
+                       'device) VALUES (?, ?, ?, ?, ?, ?)', (session['username'], str(reading_date),str(reading_time),reading,notes,device))
+        connection.commit()
+        return render_template('addData.html', success='Successfully Added Data')
+    return render_template('addData.html')
+
+
+# This route ends the users current session and redirects them to the login page
+@app.route('/logout', methods=['POST', 'GET'])
+def logout():
+    session.pop('username', None)
+    session.pop('user_type', None)
+    return redirect('/')
 
 
 def generate_chart(timestamps, readings):
 
     # Create a ColumnDataSource for Bokeh plot
     source = ColumnDataSource(data={'timestamps': timestamps, 'readings': readings})
-
     # Create a figure
-    p = figure(x_range=timestamps, title="Line Chart of Data", x_axis_label="Dates", y_axis_label="Reading")
+    p = figure(x_range=timestamps, title="Your Glucose Readings", x_axis_label="Day & Time", y_axis_label="Readings (mg/dL)")
 
     # Plot the data as a line chart
     p.line(x='timestamps', y='readings', source=source, line_width=2)

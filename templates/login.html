@@ -2,7 +2,68 @@
 <html>
 <head>
     <title>ARCBiotracker Login</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom Theme Colors */
+        :root {
+            --primary-color: #d5eaef; /* Light Blue */
+            --accent-color: #0066cc; /* Blue */
+            --navbar-bg-color: var(--primary-color);
+            --form-bg-color: #f9f9f9; /* Light Gray */
+        }
+
+        /* Login Page Styles */
+        body {
+            background-color: var(--primary-color);
+        }
+
+        .container {
+            background-color: var(--form-bg-color);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        h2 {
+            color: var(--accent-color);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: #0055b3; /* Slightly Darker Shade */
+            border-color: #0055b3;
+        }
+
+        .btn-secondary {
+            background-color: #ccc; /* Gray */
+            border-color: #ccc;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn-secondary:hover {
+            background-color: #b3b3b3; /* Slightly Darker Shade */
+            border-color: #b3b3b3;
+        }
+
+        .alert {
+            margin-top: 20px;
+        }
+    </style>
+</head>
 <body>
     <div class="container">
         <div class="row mt-5">
@@ -10,6 +71,9 @@
                 <h2>ARCBiotracker Login</h2>
                 {% if message %}
                     <div class="alert alert-danger">{{ message }}</div>
+                {% endif %}
+                {% if success %}
+                    <div class="alert alert-success" role="alert">{{ success }}</div>
                 {% endif %}
                 <form action="/login" method="POST">
                     <div class="form-group">
@@ -29,6 +93,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Login</button>
                 </form>
+                <a href="/sign-up" class="btn btn-secondary">Don't have an account? Sign up</a>
             </div>
         </div>
     </div>

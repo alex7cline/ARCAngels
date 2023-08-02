@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Title</title>
+    <style>
+        /* Custom Card Styles */
+        .reading-card {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 30px;
+        }
+        .reading-card h2 {
+            color: #0066cc; /* Blue */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        /* Customize the splash page background and text styles */
+        body {
+            background-color: #d5eaef;
+        }
+
+        .bokeh-plot-container {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- Website Name -->
+        <a class="navbar-brand" href="/home">ARCBiotracker</a>
+
+        <!-- Nav Tabs -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/view-readings">View Readings</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/add-data">Add Readings</a>
+            </li>
+        </ul>
+
+        <!-- Logout Button -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <form class="form-inline my-2 my-lg-0" action="/logout" method="post">
+                    <button class="dropdown-item" type="submit">Logout</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 reading-card bokeh-plot-container">
+                <h2>Your Readings</h2>
+                {% if message %}
+                <div class="alert alert-danger">{{ message }}</div>
+                {% endif %}
+
+                <!-- Bokeh plot will be rendered here -->
+
+                    {{ bokeh_script|safe }}
+                    {{ bokeh_div|safe }}
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

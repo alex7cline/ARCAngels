@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up</title>
+  <!-- Add Bootstrap CSS link -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<style>
+    /* Custom Theme Colors */
+    :root {
+        --primary-color: #d5eaef; /* Light Blue */
+        --accent-color: #0066cc; /* Blue */
+        --navbar-bg-color: var(--primary-color);
+        --form-bg-color: #f9f9f9; /* Light Gray */
+    }
+
+    /* Navigation Bar Styles */
+    .navbar {
+        background-color: var(--navbar-bg-color);
+    }
+
+    .navbar-brand {
+        color: var(--accent-color);
+        font-weight: bold;
+    }
+
+    .navbar-nav .nav-link {
+        color: var(--accent-color);
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: #004f99; /* Slightly Darker Shade */
+    }
+
+    /* Form Styles */
+    .container {
+        background-color: var(--form-bg-color);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    h2 {
+        color: var(--accent-color);
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        color: var(--accent-color);
+        font-weight: bold;
+    }
+
+    .btn-primary {
+        background-color: var(--accent-color);
+        border-color: var(--accent-color);
+    }
+
+    .btn-primary:hover {
+        background-color: #0055b3; /* Slightly Darker Shade */
+        border-color: #0055b3;
+    }
+</style>
+<div class="container mt-4">
+  <h2>Sign Up</h2>
+
+  <form action="/sign-up" method="POST">
+    <div class="form-group">
+      <label for="uname">Username:</label>
+      <input type="text" class="form-control" id="uname" name="uname" placeholder="Enter username" required>
+    </div>
+    <div class="form-group">
+      <label for="pass">Password:</label>
+      <input type="password" class="form-control" id="pass" name="pass" placeholder="Enter password" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+    </div>
+    <div class="form-group">
+      <label for="fname">First Name:</label>
+      <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter first name" required>
+    </div>
+    <div class="form-group">
+      <label for="lname">Last Name:</label>
+      <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter last name" required>
+    </div>
+    <div class="form-group">
+      <label for="DOB">DOB (MM/DD/YYYY):</label>
+      <input type="date" class="form-control" id="DOB" name="DOB" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <!-- Already have an account link -->
+  <div class="mt-3">
+    <p>Already have an account? <a href="/login">Login</a></p>
+  </div>
+</div>
+
+<!-- Add Bootstrap JS and jQuery scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
