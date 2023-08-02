@@ -23,6 +23,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-top: 50px;
+            max-width: 500px;
         }
 
         h2 {
@@ -67,7 +68,7 @@
 <body>
     <div class="container">
         <div class="row mt-5">
-            <div class="col-md-6 offset-md-3">
+            <div class="col-md-8 offset-md-2"> <!-- Reduced to 8 columns with 2-column offset on either side -->
                 <h2>ARCBiotracker Login</h2>
                 {% if message %}
                     <div class="alert alert-danger">{{ message }}</div>
